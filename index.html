@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ally Teo — Talent · Sales · Product</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300..600;1,6..72,300..500&family=Hanken+Grotesk:wght@300;400;500;600&family=DM+Serif+Display:ital@0;1&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#f7f4ee; --paper-2:#f1ece3; --card:#fffdf9;
+  --ink:#2c2925; --ink-soft:#726b60; --line:rgba(44,41,37,.12);
+  --accent:#445a78; --accent-soft:#5d7390;
+  /* HERE palette */
+  --h-cream:#FAF7F2; --h-sand:#F5EFE6; --h-sand-d:#EDE4D8;
+  --h-amber:#D4875A; --h-amber-pale:#F2D5C0; --h-indigo:#3D4F6E;
+  --h-charcoal:#2C2C2C; --h-grey:#8C8278; --h-soft:#C4BBB0;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  background:var(--paper); color:var(--ink);
+  font-family:'Hanken Grotesk',sans-serif; font-weight:400; line-height:1.65;
+  -webkit-font-smoothing:antialiased; overflow-x:hidden;
+}
+.wrap{max-width:980px;margin:0 auto;padding:0 32px}
+.kick{font-size:11px;letter-spacing:.24em;text-transform:uppercase;color:var(--ink-soft);font-weight:600}
+.serif{font-family:'Newsreader',serif}
+
+/* NAV */
+nav{position:sticky;top:0;z-index:50;background:rgba(247,244,238,.82);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+nav .wrap{display:flex;align-items:center;justify-content:space-between;padding:18px 32px}
+.brand{font-family:'Newsreader',serif;font-size:19px;font-weight:500;letter-spacing:.01em}
+.nav-links{display:flex;gap:30px;align-items:center}
+.nav-links a{color:var(--ink-soft);text-decoration:none;font-size:14px;font-weight:500;transition:color .25s}
+.nav-links a:hover{color:var(--ink)}
+.nav-links a.cta{color:var(--accent)}
+.nav-links a.cta:hover{color:var(--ink)}
+@media(max-width:680px){.nav-links a:not(.cta){display:none}}
+
+/* HERO */
+header{padding:128px 0 96px}
+.kick-line{display:flex;align-items:center;gap:14px;margin-bottom:30px}
+.kick-line::after{content:'';flex:1;height:1px;background:var(--line);max-width:80px}
+h1.name{font-family:'Newsreader',serif;font-weight:400;font-size:clamp(46px,8vw,84px);line-height:1.02;letter-spacing:-.01em}
+h1.name em{font-style:italic;color:var(--accent);font-weight:300}
+.tag{font-family:'Newsreader',serif;font-style:italic;font-size:clamp(18px,2.6vw,24px);color:var(--ink-soft);margin-top:20px;font-weight:300}
+.lede{max-width:540px;color:var(--ink-soft);font-size:16px;margin-top:24px}
+.hero-btns{display:flex;gap:26px;align-items:center;margin-top:38px;flex-wrap:wrap}
+.btn{font-size:15px;font-weight:500;text-decoration:none;cursor:pointer;transition:all .25s}
+.btn-fill{background:var(--accent);color:var(--paper);padding:12px 24px;border-radius:4px}
+.btn-fill:hover{background:var(--ink)}
+.btn-link{color:var(--ink);border-bottom:1px solid var(--line);padding-bottom:3px}
+.btn-link:hover{border-color:var(--accent);color:var(--accent)}
+.avail{display:inline-flex;align-items:center;gap:11px;margin-top:36px;font-size:14px;color:var(--ink-soft)}
+.avail .dot{width:8px;height:8px;border-radius:50%;background:#6b9e7a}
+.avail b{color:var(--ink);font-weight:600}
+
+/* reveal */
+.reveal{opacity:0;transform:translateY(16px);transition:opacity .9s ease,transform .9s ease}
+.reveal.in{opacity:1;transform:none}
+
+/* METRICS */
+.metrics{border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:64px 0}
+.mgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:46px 24px}
+@media(max-width:640px){.mgrid{grid-template-columns:repeat(2,1fr);gap:38px 20px}}
+.metric .num{font-family:'Newsreader',serif;font-weight:300;font-size:clamp(38px,5.5vw,56px);line-height:1;letter-spacing:-.01em}
+.metric .lab{color:var(--ink-soft);font-size:13px;margin-top:10px}
+
+/* SECTION */
+section{padding:104px 0}
+.sec-head{margin-bottom:60px}
+.sec-head h2{font-family:'Newsreader',serif;font-weight:400;font-size:clamp(30px,4.5vw,44px);letter-spacing:-.01em;margin-top:16px}
+.sec-head h2 em{font-style:italic;color:var(--accent);font-weight:300}
+
+/* TIMELINE */
+.tl{position:relative;padding-left:30px}
+.tl::before{content:'';position:absolute;left:3px;top:8px;bottom:8px;width:1px;background:var(--line)}
+.job{position:relative;padding-bottom:52px}
+.job:last-child{padding-bottom:0}
+.job::before{content:'';position:absolute;left:-30px;top:9px;width:7px;height:7px;border-radius:50%;background:var(--paper);border:1px solid var(--accent);transition:background .3s}
+.job:hover::before{background:var(--accent)}
+.job .when{font-size:12px;letter-spacing:.12em;color:var(--ink-soft);font-weight:600}
+.job h3{font-family:'Newsreader',serif;font-size:22px;font-weight:500;margin:7px 0 2px}
+.job .co{color:var(--accent);font-size:14px;font-weight:600;margin-bottom:14px}
+.job ul{list-style:none;display:flex;flex-direction:column;gap:8px}
+.job li{position:relative;padding-left:18px;color:#4a463f;font-size:15px}
+.job li::before{content:'';position:absolute;left:0;top:11px;width:6px;height:1px;background:var(--accent)}
+.job li b{color:var(--ink);font-weight:600}
+
+/* SKILLS */
+.skills-grid{display:grid;grid-template-columns:1fr 1fr;gap:44px}
+@media(max-width:640px){.skills-grid{grid-template-columns:1fr;gap:34px}}
+.skill-block h4{font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--ink-soft);font-weight:600;margin-bottom:18px}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{border:1px solid var(--line);border-radius:4px;padding:7px 14px;font-size:14px;color:#4a463f;transition:all .25s;background:var(--paper)}
+.chip:hover{border-color:var(--accent);color:var(--accent)}
+
+/* HERE CASE */
+.case{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:52px;display:grid;grid-template-columns:1.1fr .9fr;gap:48px;align-items:center;color:var(--h-charcoal)}
+@media(max-width:820px){.case{grid-template-columns:1fr;padding:34px 26px}}
+.case .badge{font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--h-amber);font-family:'Nunito',sans-serif;font-weight:700;margin-bottom:18px;display:block}
+.case h3{font-family:'DM Serif Display',serif;font-size:40px;line-height:1;color:var(--h-indigo);margin-bottom:12px}
+.case .ctag{font-style:italic;color:var(--h-grey);font-size:16px;margin-bottom:22px;font-family:'DM Serif Display',serif}
+.case p{font-size:15px;color:#4a443d;margin-bottom:18px;font-family:'Nunito',sans-serif}
+.case .feat{display:flex;flex-direction:column;gap:11px;margin-bottom:24px}
+.case .feat div{font-size:14px;font-family:'Nunito',sans-serif;font-weight:600;color:var(--h-indigo);display:flex;gap:10px;align-items:flex-start}
+.case .feat span{color:var(--h-amber)}
+.case .role{font-family:'Nunito',sans-serif;font-size:13px;color:var(--h-grey);border-top:1px solid var(--h-sand-d);padding-top:16px}
+.case .role b{color:var(--h-charcoal)}
+.phone{width:248px;height:504px;background:var(--h-cream);border-radius:36px;margin:0 auto;box-shadow:0 18px 44px rgba(61,79,110,.20),inset 0 0 0 1px rgba(0,0,0,.05);overflow:hidden;position:relative;display:flex;flex-direction:column}
+.ph-head{background:linear-gradient(160deg,#2A3A52,var(--h-indigo));padding:28px 22px 32px;position:relative}
+.ph-head::after{content:'';position:absolute;bottom:-14px;left:0;right:0;height:28px;background:var(--h-cream);border-radius:22px 22px 0 0}
+.ph-status{display:flex;justify-content:space-between;font-size:10px;font-weight:700;color:var(--h-cream);opacity:.7;margin-bottom:14px}
+.ph-title{font-family:'DM Serif Display',serif;font-size:20px;color:var(--h-cream);line-height:1.1}
+.ph-sub{font-size:11px;color:rgba(250,247,242,.6);font-style:italic;margin-top:5px}
+.ph-body{padding:18px 15px;display:flex;flex-direction:column;gap:9px;overflow-y:auto}
+.ph-card{border:2px solid var(--h-sand-d);border-radius:15px;padding:10px 12px;display:flex;gap:11px;align-items:center;background:var(--h-sand);transition:all .25s;cursor:pointer}
+.ph-card.on{background:var(--h-amber-pale);border-color:var(--h-amber)}
+.ph-ic{font-size:19px;width:28px;text-align:center;flex-shrink:0}
+.ph-nm{font-size:12px;font-weight:700;color:var(--h-charcoal)}
+.ph-card.on .ph-nm{color:var(--h-amber)}
+.ph-ds{font-size:10px;color:var(--h-grey);line-height:1.3}
+.ph-chk{width:18px;height:18px;border-radius:50%;border:2px solid var(--h-soft);flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:10px;color:#fff;transition:all .25s}
+.ph-card.on .ph-chk{background:var(--h-amber);border-color:var(--h-amber)}
+
+/* EDUCATION */
+.edu{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+@media(max-width:640px){.edu{grid-template-columns:1fr}}
+.edu-card{border:1px solid var(--line);border-radius:6px;padding:26px;transition:border-color .25s}
+.edu-card:hover{border-color:var(--accent)}
+.edu-card .yr{font-size:12px;letter-spacing:.1em;color:var(--ink-soft);font-weight:600}
+.edu-card h4{font-family:'Newsreader',serif;font-size:19px;font-weight:500;margin:9px 0 5px}
+.edu-card .inst{color:var(--ink-soft);font-size:14px}
+.certs{margin-top:18px;display:flex;flex-wrap:wrap;gap:10px}
+.cert{border:1px solid var(--line);border-radius:4px;padding:9px 14px;font-size:13px;color:#4a463f}
+
+/* CONTACT */
+.contact{border-top:1px solid var(--line);text-align:center}
+.contact h2{font-family:'Newsreader',serif;font-weight:400;font-size:clamp(32px,5vw,52px);letter-spacing:-.01em;margin-bottom:16px}
+.contact h2 em{font-style:italic;color:var(--accent);font-weight:300}
+.contact .links{display:flex;gap:30px;justify-content:center;flex-wrap:wrap;margin-top:34px}
+.contact .links a{color:var(--ink);text-decoration:none;font-weight:500;font-size:16px;border-bottom:1px solid var(--line);padding-bottom:3px;transition:all .25s}
+.contact .links a:hover{color:var(--accent);border-color:var(--accent)}
+footer{padding:34px 0;text-align:center;color:var(--ink-soft);font-size:13px;border-top:1px solid var(--line)}
+</style>
+</head>
+<body>
+
+<nav><div class="wrap">
+  <div class="brand">Ally Teo</div>
+  <div class="nav-links">
+    <a href="#work">Work</a>
+    <a href="#skills">Skills</a>
+    <a href="#project">Project</a>
+    <a href="#contact" class="cta">Get in touch</a>
+  </div>
+</div></nav>
+
+<header><div class="wrap">
+  <div class="kick-line"><span class="kick">Talent · Sales · Product — Singapore</span></div>
+  <h1 class="name">Teo Hui Shan <em>— Ally</em></h1>
+  <p class="tag">Talent acquisition, sales, and a growing pull toward product.</p>
+  <p class="lede">Eight years turning cold outreach into closed outcomes — 100+ calls a week, pipelines built from scratch, people placed across tech, fintech, banking and renewables. Now channeling that intensity into product thinking &amp; analytics.</p>
+  <div class="hero-btns">
+    <a href="#work" class="btn btn-fill">See my track record</a>
+    <a href="#project" class="btn btn-link">View side project</a>
+  </div>
+  <div class="avail"><span class="dot"></span>Open to <b>internships</b> — a practical bridge into tech sales &amp; analytics</div>
+</div></header>
+
+<div class="metrics"><div class="wrap"><div class="mgrid">
+  <div class="metric reveal"><div class="num"><span class="count" data-target="8">0</span>+</div><div class="lab">Years in talent &amp; sales</div></div>
+  <div class="metric reveal"><div class="num"><span class="count" data-target="100">0</span>+</div><div class="lab">Candidates placed</div></div>
+  <div class="metric reveal"><div class="num"><span class="count" data-target="400">0</span>+</div><div class="lab">Contractors managed</div></div>
+  <div class="metric reveal"><div class="num"><span class="count" data-target="90">0</span>%</div><div class="lab">Fill rate — niche market</div></div>
+  <div class="metric reveal"><div class="num"><span class="count" data-target="95">0</span>%</div><div class="lab">Timesheet recovery · 800+ HC</div></div>
+  <div class="metric reveal"><div class="num"><span class="count" data-target="40">0</span>%</div><div class="lab">Team efficiency lift</div></div>
+</div></div></div>
+
+<section id="work"><div class="wrap">
+  <div class="sec-head reveal"><span class="kick">01 — Experience</span>
+    <h2>A track record of <em>showing up</em> &amp; closing.</h2></div>
+  <div class="tl">
+    <div class="job reveal">
+      <div class="when">OCT 2025 — MAR 2026</div>
+      <h3>Consultant, Tech Contracting</h3>
+      <div class="co">PERSOL APAC</div>
+      <ul>
+        <li><b>Cold-called 100+ outbound prospects weekly</b>; sourced &amp; headhunted across LinkedIn, referrals and direct outreach.</li>
+        <li><b>Independently signed 2 new clients</b>, including one full 360° closure — client acquisition through to candidate delivery.</li>
+        <li>Averaged <b>2+ placements / month</b>, generating ~100 interviews and ~20 offers across SWE, Cloud, Data &amp; Cybersecurity.</li>
+      </ul>
+    </div>
+    <div class="job reveal">
+      <div class="when">SEP 2024 — SEP 2025</div>
+      <h3>HR Executive, Recruitment</h3>
+      <div class="co">Lotte</div>
+      <ul>
+        <li>Led end-to-end recruitment for retail frontline — <b>100+ hires within the year</b>.</li>
+        <li>Owned onboarding, contracts, salary proposals and work-pass administration.</li>
+        <li>Built monthly hiring reports &amp; headcount plans aligned to manpower strategy.</li>
+      </ul>
+    </div>
+    <div class="job reveal">
+      <div class="when">SEP 2023 — JUL 2024</div>
+      <h3>Senior Executive, HR</h3>
+      <div class="co">Stoked Associates Pte Ltd</div>
+      <ul>
+        <li><b>Built the company's entire HR function from scratch</b> — handbook, HRIS, payroll &amp; performance frameworks.</li>
+        <li>Secured government grants cutting operational costs <b>30%+</b>; negotiated benefits for <b>10% savings</b>.</li>
+        <li>Managed mobility &amp; relocation for 50+ foreign workers under MOM compliance.</li>
+      </ul>
+    </div>
+    <div class="job reveal">
+      <div class="when">FEB 2022 — JUL 2023</div>
+      <h3>Associate Consultant, Offshore Wind / Renewables</h3>
+      <div class="co">Atlas Professionals</div>
+      <ul>
+        <li><b>100+ outbound cold calls weekly</b> into a niche global engineering talent pool — held a <b>90% fill rate</b>.</li>
+        <li>Closed <b>10+ contracts at $100K+ USD each</b> within the first 3 months.</li>
+        <li>Delivered market intelligence, career advisory and interview coaching end-to-end.</li>
+      </ul>
+    </div>
+    <div class="job reveal">
+      <div class="when">SEP 2018 — MAY 2021</div>
+      <h3>HR Executive / HR Admin</h3>
+      <div class="co">PERSOL APAC</div>
+      <ul>
+        <li>Ran the team's <b>highest headcount portfolio — 400+ contractors</b> across multiple accounts.</li>
+        <li>Hit <b>95%+ timesheet recovery across 800+ contractors</b>; drove workflow gains of ~40%.</li>
+        <li>Resolved a <b>$300K USD overdue account in 3 months</b> through stakeholder engagement.</li>
+      </ul>
+    </div>
+  </div>
+</div></section>
+
+<section id="skills" style="background:var(--paper-2)"><div class="wrap">
+  <div class="sec-head reveal"><span class="kick">02 — Capabilities</span>
+    <h2>What I bring to a <em>pipeline</em>.</h2></div>
+  <div class="skills-grid">
+    <div class="skill-block reveal">
+      <h4>Sales &amp; Outbound</h4>
+      <div class="chips">
+        <div class="chip">Cold Calling</div><div class="chip">Prospecting</div><div class="chip">Headhunting</div>
+        <div class="chip">Pipeline Management</div><div class="chip">Objection Handling</div><div class="chip">Offer Negotiation</div>
+        <div class="chip">New Business Development</div><div class="chip">High-Volume Outreach</div><div class="chip">Quota-Driven</div>
+      </div>
+    </div>
+    <div class="skill-block reveal">
+      <h4>HR &amp; Operations</h4>
+      <div class="chips">
+        <div class="chip">Full-Cycle Recruitment</div><div class="chip">HRIS Implementation</div><div class="chip">Stakeholder Management</div>
+        <div class="chip">Onboarding</div><div class="chip">Work Pass &amp; Mobility</div><div class="chip">Compliance</div>
+        <div class="chip">Reporting &amp; Headcount Planning</div><div class="chip">Process Improvement</div>
+      </div>
+    </div>
+    <div class="skill-block reveal">
+      <h4>Industries</h4>
+      <div class="chips">
+        <div class="chip">Tech &amp; Fintech</div><div class="chip">Banking</div><div class="chip">Offshore Renewables</div>
+        <div class="chip">Retail</div><div class="chip">Construction</div><div class="chip">Oil &amp; Gas</div><div class="chip">SME</div>
+      </div>
+    </div>
+    <div class="skill-block reveal">
+      <h4>Languages &amp; Tools</h4>
+      <div class="chips">
+        <div class="chip">English — Professional</div><div class="chip">Mandarin — Fluent</div>
+        <div class="chip">SQL · Python (Data Eng cert)</div><div class="chip">CRM / HRIS</div><div class="chip">Boolean Search</div>
+      </div>
+    </div>
+  </div>
+</div></section>
+
+<section id="project"><div class="wrap">
+  <div class="sec-head reveal"><span class="kick">03 — Side Project</span>
+    <h2>I design products, <em>not just resumes</em>.</h2></div>
+  <div class="case reveal">
+    <div>
+      <span class="badge">Concept · UX · Front-end prototype</span>
+      <h3>HERE</h3>
+      <div class="ctag">Find your people — not a date.</div>
+      <p>A verified, emotionally-intelligent app for building real friendship and community. Instead of swiping on faces, people are matched by <em>intention</em> — and onboarding is designed to feel human, not algorithmic.</p>
+      <div class="feat">
+        <div><span>◆</span> Matches by intention: "to be understood", "deep conversations", "fighting the same battle", "new to this city".</div>
+        <div><span>◆</span> An "emotional fingerprint" — communication styles over personality labels.</div>
+        <div><span>◆</span> Real-people-only verification (Singpass / age) for a safe space.</div>
+      </div>
+      <div class="role"><b>My role:</b> product concept, end-to-end UX flow, and a fully working front-end prototype (v3) — designed solo.</div>
+    </div>
+    <div>
+      <div class="phone">
+        <div class="ph-head">
+          <div class="ph-status"><span>9:41</span><span>● ● ●</span></div>
+          <div class="ph-title">What brings you here?</div>
+          <div class="ph-sub">Pick everything that feels true. No right answers.</div>
+        </div>
+        <div class="ph-body">
+          <div class="ph-card on"><div class="ph-ic">🫂</div><div><div class="ph-nm">I need to be understood</div><div class="ph-ds">Same emotional wavelength. No explaining yourself.</div></div><div class="ph-chk">✓</div></div>
+          <div class="ph-card on"><div class="ph-ic">🌙</div><div><div class="ph-nm">Deep, real conversations</div><div class="ph-ds">Not small talk. The 2am kind — honest, unfiltered.</div></div><div class="ph-chk">✓</div></div>
+          <div class="ph-card"><div class="ph-ic">🧭</div><div><div class="ph-nm">New to this city</div><div class="ph-ds">Still finding my people. Want to belong somewhere.</div></div><div class="ph-chk"></div></div>
+          <div class="ph-card"><div class="ph-ic">☕</div><div><div class="ph-nm">People to do things with</div><div class="ph-ds">Coffee, hikes, markets, spontaneous plans.</div></div><div class="ph-chk"></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div></section>
+
+<section id="education" style="background:var(--paper-2)"><div class="wrap">
+  <div class="sec-head reveal"><span class="kick">04 — Education</span>
+    <h2>Foundations &amp; <em>credentials</em>.</h2></div>
+  <div class="edu">
+    <div class="edu-card reveal"><div class="yr">2021 — 2023</div><h4>BBS, Honours (2nd Upper)</h4><div class="inst">University College Dublin</div></div>
+    <div class="edu-card reveal"><div class="yr">2019 — 2020</div><h4>Specialist Diploma — Human Capital Management</h4><div class="inst">Nanyang Polytechnic · incl. Post-Dips in TA &amp; HR Business Acumen</div></div>
+    <div class="edu-card reveal"><div class="yr">2016 — 2019</div><h4>Diploma in Business</h4><div class="inst">Temasek Polytechnic</div></div>
+    <div class="edu-card reveal" style="display:flex;flex-direction:column;justify-content:center">
+      <div class="yr">Certifications</div>
+      <div class="certs">
+        <div class="cert">Certificate of Employment Intermediaries (CEI)</div>
+        <div class="cert">Data Engineer Certificate — Generation SG</div>
+      </div>
+    </div>
+  </div>
+</div></section>
+
+<section class="contact" id="contact"><div class="wrap">
+  <div class="reveal"><span class="kick">05 — Let's talk</span></div>
+  <h2 class="reveal" style="margin-top:16px">Ready to build <em>your</em> pipeline.</h2>
+  <p class="reveal" style="color:var(--ink-soft);max-width:560px;margin:0 auto;font-size:16px">Open to internships, Sales Development and Analytics roles in Singapore — using an internship as a practical bridge into the tech &amp; data space.</p>
+  <div class="links reveal">
+    <a href="mailto:allyteohuishan@gmail.com">allyteohuishan@gmail.com</a>
+    <a href="tel:+6592284855">+65 9228 4855</a>
+    <a href="https://linkedin.com/in/ally-teo">LinkedIn</a>
+  </div>
+</div></section>
+
+<footer>Designed &amp; built by Ally Teo · Singapore</footer>
+
+<script>
+/* gentle counters */
+function animateCount(el){
+  const t=+el.dataset.target;let s=null;const dur=1500;
+  function step(ts){if(!s)s=ts;const p=Math.min((ts-s)/dur,1);
+    const e=1-Math.pow(1-p,3);el.textContent=Math.round(e*t);
+    if(p<1)requestAnimationFrame(step);}
+  requestAnimationFrame(step);
+}
+const io=new IntersectionObserver((ents)=>{
+  ents.forEach(en=>{if(en.isIntersecting){
+    en.target.classList.add('in');
+    en.target.querySelectorAll?.('.count').forEach(c=>{if(!c.dataset.done){c.dataset.done=1;animateCount(c);}});
+    io.unobserve(en.target);
+  }});
+},{threshold:.25});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+/* phone mock */
+document.querySelectorAll('.ph-card').forEach(c=>{
+  c.addEventListener('click',()=>{
+    c.classList.toggle('on');
+    c.querySelector('.ph-chk').textContent=c.classList.contains('on')?'✓':'';
+  });
+});
+</script>
+</body>
+</html>
